@@ -1,0 +1,23 @@
+version: "3"
+services:
+  derper:
+    build: .
+    restart: unless-stopped
+    environment:
+      DERP_DOMAIN: derp-0.up-soft.ru
+      DERP_ADDR: :443
+      DERP_STUN: 'true'
+      DERP_CERT_MODE: letsencrypt
+      DERP_CERT_DIR: /certs
+    networks: 
+      - tailscale
+    ports:
+    - "443:443/tcp"
+
+networks:
+  tailscale:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.252.0/24
