@@ -4,7 +4,7 @@ services:
     build: .
     restart: unless-stopped
     environment:
-      DERP_DOMAIN: derp-0.up-soft.ru
+      DERP_DOMAIN: my.domain.name
       DERP_ADDR: :443
       DERP_STUN: 'true'
       DERP_CERT_MODE: letsencrypt
